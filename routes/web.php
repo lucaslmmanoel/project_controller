@@ -30,3 +30,11 @@ $this::group(['prefix' => 'tipo_projeto'], function () {
     $this::get('/edit/{id}',    ['uses' => 'TipoProjetosController@edit',    'as' => 'tipo_projeto.edit']);
     $this::get('/destroy/{id}', ['uses' => 'TipoProjetosController@destroy', 'as' => 'destroy']);
 });
+
+$this::group(['prefix' => 'demandantes'], function () {
+    $this::get('/index',        ['uses' => 'DemandantesController@index',   'as' => 'demandantes.index']);
+    $this::get('/form',         ['uses' => 'DemandantesController@create',  'as' => 'demandantes.create']);
+    $this::post('/store',       ['uses' => 'DemandantesController@store',   'as' => 'demandantes.store']);
+    $this::get('/edit/{id}',    ['uses' => 'DemandantesController@edit',    'as' => 'demandantes.edit']);
+    $this::get('/destroy/{id}', ['uses' => 'DemandantesController@destroy', 'as' => 'demandantes.destroy']);
+});

@@ -19,6 +19,11 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/paper-dashboard.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/demo.css')}}" rel="stylesheet"/>
+    <style>
+        .obrigatorio{
+            color: #ff0000;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,6 +54,12 @@
                     <a href="./user.html">
                         <i class="nc-icon nc-single-02"></i>
                         <p>Funcionários</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="../demandantes/index">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>Demandantes</p>
                     </a>
                 </li>
                 <li>
