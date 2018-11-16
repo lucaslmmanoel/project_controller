@@ -19,6 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-$this::resource('tipo_projetos','TipoProjetosController');
+//$this::resource('tipo_projetos','TipoProjetosController');  # Verificar a possibilidade de usar padrao resource depois.
 
-Route::get('/tipo_projeto', 'TipoProjetosController@index')->name('index');
+//$this::get('/tipo_projeto', 'TipoProjetosController@index')->name('index');
+
+$this::group(['prefix' => 'tipo_projeto'], function () {
+    $this::get('/index',        ['uses' => 'TipoProjetosController@index',   'as' => 'tipo_projeto.index']);
+    $this::get('/form',         ['uses' => 'TipoProjetosController@create',  'as' => 'create']);
+    $this::post('/store',       ['uses' => 'TipoProjetosController@store',   'as' => 'tipo_projeto.store']);
+    $this::get('/edit/{id}',    ['uses' => 'TipoProjetosController@edit',    'as' => 'tipo_projeto.edit']);
+    $this::get('/destroy/{id}', ['uses' => 'TipoProjetosController@destroy', 'as' => 'tipo_projeto.destroy']);
+});

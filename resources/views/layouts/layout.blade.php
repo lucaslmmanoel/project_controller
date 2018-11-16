@@ -33,7 +33,7 @@
                     <img src="../assets/img/logo-small.png" alt="um logo legal aqui">
                 </div>
             </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+            <a href="/" class="simple-text logo-normal">
                 PROJCTRL
             </a>
         </div>
@@ -59,7 +59,7 @@
                 </li>
                 </li>
                 <li>
-                    <a href="../tipo_projeto">
+                    <a href="../tipo_projeto/index">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Tipo de Projetos</p>
                     </a>
