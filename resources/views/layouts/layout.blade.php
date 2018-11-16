@@ -68,6 +68,12 @@
                         <p>Projetos</p>
                     </a>
                 </li>
+                <li>
+                    <a href="../perfil/index">
+                        <i class="nc-icon nc-tile-56"></i>
+                        <p>Perfil</p>
+                    </a>
+                </li>
                 </li>
                 <li>
                     <a href="../tipo_projeto/index">
