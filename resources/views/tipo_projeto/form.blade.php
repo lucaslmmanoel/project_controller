@@ -3,40 +3,47 @@
 @section('content')
     <div class="content">
         <div class="row text-center">
-            <div class="col-lg-12">
+            <div class="col-lg-6 offset-3">
                 <div class="card card-stats">
-                    <div class="card-body ">
+                    <div class="card-header">
+                        <div class="col-lg-12">
+                            <h5 class="text-center">Tipo de Projetos</h5>
+                            <p>Cadastre aqui os tipos de projeto que Trabalha</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-body center">
                         <div class="row text-center">
-                            <div class="col-12 col-md-4 col-lg-12">
-                                <h5 class="text-center">Tipo de Projetos</h5>
-                            </div>
-                            <div align="center">
+                            <div class="content">
                                 <form method="post" action=" {{ route('tipo_projeto.store')  }} ">
-                                    {{ csrf_field() }}
+                                    <div class="row">
+                                        {{ csrf_field() }}
 
-                                    <div id="oculto">
-                                        <input type="number" name="id_tipo_projeto" hidden>
-                                    </div>
+                                        <div id="oculto">
+                                            <input type="number" name="id_tipo_projeto" hidden>
+                                        </div>
 
-                                    <div class="col-lg-s12">
-                                        <label for="tx_nome">Nome</label>
-                                        <input type="text" name="nome" id="tx_nome" maxlength="30" required/>
-                                    </div>
-                                    <div class="col-lg-s12">
-                                        <label for="tx_descricao">Descrição</label>
-                                        <input type="text" name="desc" id="tx_descricao" maxlength="70" required/>
-                                    </div>
-                                    <br>
-                                    {{-- Mostrar só para perfil adm (Roger)  --}}
-                                    <div class="col-lg-s12">
-                                        <label for="tp_status">Supervisor</label>
-                                        <input type="radio" name="status" id="tp_status" value="A" />Ativo
-                                        <input type="radio" name="status" id="tp_status" value="I" />Inativo
-                                        <br>
-                                    </div>
-                                    <div class="card-footer ">
-                                        <hr>
-                                        <div class="col-lg-s12">
+                                        <div class="col-lg-10 offset-1">
+                                            <label for="tx_nome">Nome do tipo de projeto</label>
+                                            <input type="text" class="form-control" name="nome" id="tx_nome"
+                                                   maxlength="30"
+                                                   required/>
+                                        </div>
+                                        <div class="col-lg-10 offset-1">
+                                            <label class="form-label" for="tx_descricao">Descrição</label>
+                                            <input type="text" class="form-control" name="desc" id="tx_descricao"
+                                                   maxlength="70"
+                                                   required/>
+                                        </div>
+                                        <div class="col-lg-10 offset-1">
+                                            <label for="tp_status">Status do tipo de projeto</label>
+                                            <input type="radio" class="form-control" name="status" id="tp_status"
+                                                   value="A"/> <span class="text-success"> Ativo </span>
+                                            <input type="radio" class="form-control" name="status" id="tp_status"
+                                                   value="I"/> <span class="text-warning"> Inativo </span>
+                                            <br>
+                                        </div>
+                                        <div class="col-lg-12">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>
                                                 Salvar
@@ -48,19 +55,11 @@
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
-                    {{--<div class="card-footer ">--}}
-                    {{--<hr>--}}
-                    {{--<div class="stats">--}}
-                    {{--<i class="fa fa-calendar-o"></i> 20/11/2018--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
-
         </div>
     </div>
 
