@@ -68,6 +68,11 @@
                         <p>Projetos</p>
                     </a>
                 </li>
+                <li>
+                    <a href="../cargo/index">
+                        <i class="nc-icon nc-tile-56"></i>
+                        <p>Cargo</p>
+                    </a>
                 </li>
                 <li>
                     <a href="../tipo_projeto/index">

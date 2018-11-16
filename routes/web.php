@@ -38,3 +38,11 @@ $this::group(['prefix' => 'demandantes'], function () {
     $this::get('/edit/{id}',    ['uses' => 'DemandantesController@edit',    'as' => 'demandantes.edit']);
     $this::get('/destroy/{id}', ['uses' => 'DemandantesController@destroy', 'as' => 'demandantes.destroy']);
 });
+
+$this::group(['prefix' => 'cargo'], function () {
+    $this::get('/index',        ['uses' => 'CargoController@index',   'as' => 'cargo.index']);
+    $this::get('/form',         ['uses' => 'CargoController@create',  'as' => 'cargo.create']);
+    $this::post('/store',       ['uses' => 'CargoController@store',   'as' => 'cargo.store']);
+    $this::get('/edit/{id}',    ['uses' => 'CargoController@edit',    'as' => 'cargo.edit']);
+    $this::get('/destroy/{id}', ['uses' => 'CargoController@destroy', 'as' => 'cargo.destroy']);
+});
