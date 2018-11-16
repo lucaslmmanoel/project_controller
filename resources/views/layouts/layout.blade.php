@@ -57,6 +57,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="../demandantes/index">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>Demandantes</p>
+                    </a>
+                </li>
+                <li>
                     <a href="./tables">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Projetos</p>
