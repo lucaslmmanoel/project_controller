@@ -33,13 +33,13 @@
                     <img src="../assets/img/logo-small.png" alt="um logo legal aqui">
                 </div>
             </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+            <a href="/" class="simple-text logo-normal">
                 PROJCTRL
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active ">
+                <li>
                     <a href="./dashboard.html">
                         <i class="nc-icon nc-bank"></i>
                         <p>Gerência</p>
@@ -52,9 +52,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./tables.html">
+                    <a href="./tables">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Projetos</p>
+                    </a>
+                </li>
+                </li>
+                <li>
+                    <a href="../tipo_projeto/index">
+                        <i class="nc-icon nc-tile-56"></i>
+                        <p>Tipo de Projetos</p>
                     </a>
                 </li>
                 <li>

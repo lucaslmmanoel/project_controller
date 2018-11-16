@@ -16,7 +16,7 @@ class CreateTipoProjetoTable extends Migration
         Schema::create('tb_tipo_projeto', function (Blueprint $table) {
             $table->increments('id_tipo_projeto');
             $table->string('nome', '30');
-            $table->string('desc', '45')->nullable();
+            $table->string('desc', '70')->nullable();
             $table->enum('status', ['A', 'I'])->default('A');
         });
     }
