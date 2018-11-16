@@ -19,6 +19,11 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/paper-dashboard.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/demo.css')}}" rel="stylesheet"/>
+    <style>
+        .obrigatorio{
+            color: #ff0000;
+        }
+    </style>
 </head>
 
 <body>

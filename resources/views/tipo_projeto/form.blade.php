@@ -3,7 +3,7 @@
 @section('content')
     <div class="content">
         <div class="row text-center">
-            <div class="col-lg-6 offset-3">
+            <div class="col-lg-8 offset-2">
                 <div class="card card-stats">
                     <div class="card-header">
                         <div class="col-lg-12">
@@ -24,19 +24,17 @@
                                         </div>
 
                                         <div class="col-lg-10 offset-1">
-                                            <label for="tx_nome">Nome do tipo de projeto</label>
+                                            <label for="tx_nome">Nome <span class="obrigatorio">*</span></label>
                                             <input type="text" class="form-control" name="nome" id="tx_nome"
-                                                   maxlength="30"
-                                                   required/>
+                                                   maxlength="30" required/>
                                         </div>
                                         <div class="col-lg-10 offset-1">
                                             <label class="form-label" for="tx_descricao">Descrição</label>
                                             <input type="text" class="form-control" name="desc" id="tx_descricao"
-                                                   maxlength="70"
-                                                   required/>
+                                                   maxlength="70" required/>
                                         </div>
                                         <div class="col-lg-10 offset-1">
-                                            <label for="tp_status">Status do tipo de projeto</label>
+                                            <label for="tp_status">Status <span class="obrigatorio">*</span></label>
                                             <input type="radio" class="form-control" name="status" id="tp_status"
                                                    value="A"/> <span class="text-success"> Ativo </span>
                                             <input type="radio" class="form-control" name="status" id="tp_status"
