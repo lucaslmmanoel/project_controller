@@ -35,7 +35,7 @@
                                             href="edit/{{ $tp_projeto['id_tipo_projeto'] }}">
                                             <i class="material-icons left">mode_edit</i>
                                         </a>
-                                        <a href="#" onclick="deletar({{ $tp_projeto['id_tipo_projeto'] }})">
+                                        <a href="destroy/{{ $tp_projeto['id_tipo_projeto'] }}">
                                             <i class="material-icons left red-text">delete</i>
                                         </a>
                                     </td>

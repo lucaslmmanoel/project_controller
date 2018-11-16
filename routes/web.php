@@ -28,5 +28,5 @@ $this::group(['prefix' => 'tipo_projeto'], function () {
     $this::get('/form',         ['uses' => 'TipoProjetosController@create',  'as' => 'create']);
     $this::post('/store',       ['uses' => 'TipoProjetosController@store',   'as' => 'tipo_projeto.store']);
     $this::get('/edit/{id}',    ['uses' => 'TipoProjetosController@edit',    'as' => 'tipo_projeto.edit']);
-    $this::get('/destroy/{id}', ['uses' => 'TipoProjetosController@destroy', 'as' => 'tipo_projeto.destroy']);
+    $this::get('/destroy/{id}', ['uses' => 'TipoProjetosController@destroy', 'as' => 'destroy']);
 });

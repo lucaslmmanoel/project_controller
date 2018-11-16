@@ -12,14 +12,21 @@ class TipoProjetosController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws Exception
      */
     public function index()
     {
-//        return view('tipo_projeto.index');
         try{
-            // Retorna todos os Supervisores que tem o status Ativo.
-            $tp_projetos = TpProjeto::where('status', 'A')->orderBy('nome', 'asc')->get();
+            /**
+             * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
+             * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
+             */
+            // Retorna todos os Tipos de Projetos que tem o status Ativo.
+            $tp_projetos = TpProjeto::orderBy('nome', 'asc')->get();
+
+//            // Retorna todos os Tipos de Projetos que tem o status Ativo.
+//            $tp_projetos = TpProjeto::where('status', 'A')->orderBy('nome', 'asc')->get();
 
             return view('tipo_projeto.index', compact('tp_projetos', $tp_projetos));
         } catch(\Exception $e){
@@ -40,8 +47,9 @@ class TipoProjetosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws Exception
      */
     public function store(Request $request)
     {
@@ -82,14 +90,15 @@ class TipoProjetosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws Exception
      */
     public function edit($id)
     {
         try{
             $tp_projeto = TipoProjetoModel::find($id);
-            return view('tipo_projeto.form', compact('tipo_projeto', $tp_projeto));
+            return view('tipo_projeto.edit', compact('tp_projeto', $tp_projeto));
 
         } catch(Exception $e){
             throw new exception('Não foi possível recuperar os dados do tipo de projeto '.$tp_projeto->tx_nome.' !');
@@ -105,17 +114,25 @@ class TipoProjetosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // está sendo feito no store.
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws Exception
      */
     public function destroy($id)
     {
-        //
+        try{
+            $tp_projeto = TipoProjetoModel::find($id);
+            $tp_projeto->status = 'I';
+            $tp_projeto->save();
+            return redirect()->route('tipo_projeto.index');
+        } catch(Exception $e){
+            throw new exception('Não foi possível excluir o registro do Tipo de Projeto '.$tp_projeto->tx_nome.' !');
+        }
     }
 }
