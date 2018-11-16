@@ -23,13 +23,13 @@
                                             <input type="number" name="id_demandante" value="{{ $demandante->id_demandante }}" hidden>
                                         </div>
 
-                                        <div class="col-lg-10 offset-1">
+                                        <div class="col-lg-10 offset-lg-4">
                                             <label for="tx_nome">Nome <span class="obrigatorio">*</span></label>
                                             <input type="text" class="form-control" name="nome" id="tx_nome"
                                                    maxlength="30" value="{{ $demandante->nome }}" required/>
                                         </div>
                                         {{-- Mostrar só para perfil adm (Roger) --}}
-                                        <div class="col-lg-10 offset-1">
+                                        <div class="col-lg-10 offset-lg-4">
                                             <label for="tp_status">Status <span class="obrigatorio">*</span> </label>
                                             <input type="radio" name="status" class="form-control" id="tp_status"
                                                    value="A" @php echo $checked = ($demandante->status == 'A') ? 'checked' : '' @endphp/>Ativo
@@ -37,7 +37,7 @@
                                                    value="I" @php echo $checked = ($demandante->status == 'I') ? 'checked' : '' @endphp/>Inativo
                                             <br>
                                         </div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-12 offset-lg-3">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>
                                                 Salvar
