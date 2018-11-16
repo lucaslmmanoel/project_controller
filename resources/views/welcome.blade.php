@@ -112,13 +112,13 @@
                     <div class="card-footer ">
                         <div class="legend">
                             <a href="#" class="btn btn-small btn-outline-warning"><i
-                                    class="fa fa-circle text-primary"></i> Em andamento</a><br><br>
+                                    class="fa fa-circle text-warning"></i> Em andamento</a><br><br>
                             <a href="#" class="btn btn-small btn-outline-success"><i
-                                    class="fa fa-circle text-warning"></i> A receber</a>
+                                    class="fa fa-circle text-success"></i> A receber</a>
                             <a href="#" class="btn btn-small btn-outline-info"><i
-                                    class="fa fa-circle text-danger"></i> A iniciar</a><br><br>
+                                    class="fa fa-circle text-info"></i> A iniciar</a><br><br>
                             <a href="#" class="btn btn-small btn-outline-default"><i
-                                    class="fa fa-circle text-gray"></i> Finalizados</a>
+                                    class="fa fa-circle text-dark"></i> Finalizados</a>
                         </div>
                         <hr>
                         <div class="stats">
