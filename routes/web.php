@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+$this::resource('tipo_projetos','TipoProjetosController');
+
+Route::get('/tipo_projeto', 'TipoProjetosController@index')->name('index');

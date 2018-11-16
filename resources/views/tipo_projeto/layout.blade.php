@@ -39,7 +39,7 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li>
+                <li class="active ">
                     <a href="./dashboard.html">
                         <i class="nc-icon nc-bank"></i>
                         <p>Gerência</p>
@@ -59,7 +59,7 @@
                 </li>
                 </li>
                 <li>
-                    <a href="../tipo_projeto">
+                    <a href="./tipo_projeto">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Tipo de Projetos</p>
                     </a>
