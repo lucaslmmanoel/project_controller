@@ -20,7 +20,7 @@
     <link href="{{asset('css/paper-dashboard.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/demo.css')}}" rel="stylesheet"/>
     <style>
-        .obrigatorio{
+        .obrigatorio {
             color: #ff0000;
         }
     </style>
@@ -35,7 +35,7 @@
         <div class="logo">
             <a href="#" class="simple-text logo-mini">
                 <div class="logo-image-small">
-                    <img src="../assets/img/logo-small.png" alt="um logo legal aqui">
+                    <i class="nc-icon nc-atom" style="font-size: 30px;"></i>
                 </div>
             </a>
             <a href="/" class="simple-text logo-normal">
@@ -43,28 +43,30 @@
             </a>
         </div>
         <div class="sidebar-wrapper">
+            <!-- Right Side Of Navbar -->
+
             <ul class="nav">
                 <li>
-                    <a href="./dashboard.html">
-                        <i class="nc-icon nc-bank"></i>
+                    <a href="#">
+                        <i class="nc-icon nc-hat-3"></i>
                         <p>Gerência</p>
                     </a>
                 </li>
                 <li>
                     <a href="./user.html">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>Funcionários</p>
+                        <i class="nc-icon nc-trophy"></i>
+                        <p>Time</p>
                     </a>
                 </li>
                 <li>
                     <a href="../demandantes/index">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>Demandantes</p>
+                        <i class="nc-icon nc-satisfied"></i>
+                        <p>Product Owners</p>
                     </a>
                 </li>
                 <li>
                     <a href="./tables">
-                        <i class="nc-icon nc-tile-56"></i>
+                        <i class="nc-icon nc-single-copy-04"></i>
                         <p>Projetos</p>
                     </a>
                 </li>
@@ -74,22 +76,17 @@
                         <p>Cargo</p>
                     </a>
                     <a href="../perfil/index">
-                        <i class="nc-icon nc-tile-56"></i>
+                        <i class="nc-icon nc-controller-modern"></i>
                         <p>Perfil</p>
                     </a>
                 </li>
                 <li>
                     <a href="../tipo_projeto/index">
-                        <i class="nc-icon nc-tile-56"></i>
-                        <p>Tipo de Projetos</p>
+                        <i class="nc-icon nc-book-bookmark"></i>
+                        <p>Tipos de Projetos</p>
                     </a>
                 </li>
-                <li>
-                    <a href="./typography.html">
-                        <i class="nc-icon nc-bank"></i>
-                        <p>Lorem</p>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -114,46 +111,28 @@
                     <span class="navbar-toggler-bar navbar-kebab"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                    <form>
-                        <div class="input-group no-border">
-                            <input type="text" value="" class="form-control" placeholder="Pesquise aqui...">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <i class="nc-icon nc-zoom-split"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link btn-magnify" href="#pablo">
-                                <i class="nc-icon nc-layout-11"></i>
+                                <i class="nc-icon nc-time-alarm mr-3" style="font-size: 30px"></i>
+                                   Horas
                                 <p>
                                     <span class="d-lg-none d-md-block">Stats</span>
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item btn-rotate dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">Some Actions</span>
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
+
                         <li class="nav-item">
-                            <a class="nav-link btn-rotate" href="#pablo">
-                                <i class="nc-icon nc-settings-gear-65"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">Account</span>
-                                </p>
+                            <a class="nav-link btn-rotate" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="nc-icon nc-user-run mr-3" style="font-size: 30px"></i>
+                                   {{("  SAIR")}}
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </div>
