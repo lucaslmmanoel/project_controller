@@ -16,7 +16,7 @@ class CreatePerfilTable extends Migration
         Schema::create('tb_perfil', function (Blueprint $table) {
             $table->increments('id_perfil');
             $table->string('nome', '30');
-            $table->string('desc', '50');
+            $table->string('desc', '50')->nullable();
             $table->enum('status', ['A', 'I'])->default('A');
         });
     }
