@@ -65,8 +65,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./tables">
-                        <i class="nc-icon nc-single-copy-04"></i>
+                    <a href="../projeto/index">
+                        <i class="nc-icon nc-tile-56"></i>
                         <p>Projetos</p>
                     </a>
                 </li>

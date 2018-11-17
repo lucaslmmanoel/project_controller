@@ -15,8 +15,11 @@ class CreateProjetoTable extends Migration
     {
         Schema::create('tb_projeto', function (Blueprint $table) {
             $table->increments('id_projeto');
-            $table->string('nome', '30');
-            $table->enum('status', ['A', 'I'])->default('A');
+            $table->string('nome', 30);
+            $table->char('status', 1)->default('A');
+            $table->decimal('valor');
+            $table->date('dt_inicio');
+            $table->date('dt_fim');
 
             $table->integer('id_tipo_projeto')->unsigned();
             $table->foreign('id_tipo_projeto')->references('id_tipo_projeto')->on('tb_tipo_projeto');
