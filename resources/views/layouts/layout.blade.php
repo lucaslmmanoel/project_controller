@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./tables">
+                    <a href="../projetos/index">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Projetos</p>
                     </a>
