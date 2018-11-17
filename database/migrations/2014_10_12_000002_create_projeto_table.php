@@ -17,6 +17,9 @@ class CreateProjetoTable extends Migration
             $table->increments('id_projeto');
             $table->string('nome', '30');
             $table->enum('status', ['A', 'I'])->default('A');
+            $table->decimal('valor');
+            $table->date('dt_inicio');
+            $table->date('dt_fim');
 
             $table->integer('id_tipo_projeto')->unsigned();
             $table->foreign('id_tipo_projeto')->references('id_tipo_projeto')->on('tb_tipo_projeto');
