@@ -9,6 +9,11 @@ use Exception;
 
 class TipoProjetosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,7 @@ class TipoProjetosController extends Controller
      */
     public function index()
     {
-        try{
+        try {
             /**
              * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
              * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
@@ -29,7 +34,7 @@ class TipoProjetosController extends Controller
 //            $tp_projetos = TpProjeto::where('status', 'A')->orderBy('nome', 'asc')->get();
 
             return view('tipo_projeto.index', compact('tp_projetos', $tp_projetos));
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             throw new Exception('Não foi possível trazer os dados dos Tipos de projetos !');
         }
     }
@@ -53,14 +58,14 @@ class TipoProjetosController extends Controller
      */
     public function store(Request $request)
     {
-        try{
+        try {
 
-            if(!empty($request['id_tipo_projeto'])){
-                try{
+            if (!empty($request['id_tipo_projeto'])) {
+                try {
                     TpProjeto::find($request['id_tipo_projeto'])->update($request->input());
                     return redirect()->route('tipo_projeto.index');
-                } catch(Exception $e){
-                    throw new exception('Não foi possível alterar o registro do Tipo de Projoto '.$request->nome.' !');
+                } catch (Exception $e) {
+                    throw new exception('Não foi possível alterar o registro do Tipo de Projoto ' . $request->nome . ' !');
                 }
             }
             $tp_projeto = new TpProjeto;
@@ -70,16 +75,16 @@ class TipoProjetosController extends Controller
             $tp_projeto->save();
 
             return redirect()->route('tipo_projeto.index');
-        } catch (Exception $e ){
+        } catch (Exception $e) {
             echo $e;
-            throw new exception('Não foi possível salvar o Tipo de Projeto'.$request->nome.' !');
+            throw new exception('Não foi possível salvar o Tipo de Projeto' . $request->nome . ' !');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -96,20 +101,20 @@ class TipoProjetosController extends Controller
      */
     public function edit($id)
     {
-        try{
+        try {
             $tp_projeto = TipoProjetoModel::find($id);
             return view('tipo_projeto.edit', compact('tp_projeto', $tp_projeto));
 
-        } catch(Exception $e){
-            throw new exception('Não foi possível recuperar os dados do tipo de projeto '.$tp_projeto->tx_nome.' !');
+        } catch (Exception $e) {
+            throw new exception('Não foi possível recuperar os dados do tipo de projeto ' . $tp_projeto->tx_nome . ' !');
         }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -126,13 +131,13 @@ class TipoProjetosController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $tp_projeto = TipoProjetoModel::find($id);
             $tp_projeto->status = 'I';
             $tp_projeto->save();
             return redirect()->route('tipo_projeto.index');
-        } catch(Exception $e){
-            throw new exception('Não foi possível excluir o registro do Tipo de Projeto '.$tp_projeto->tx_nome.' !');
+        } catch (Exception $e) {
+            throw new exception('Não foi possível excluir o registro do Tipo de Projeto ' . $tp_projeto->tx_nome . ' !');
         }
     }
 }
