@@ -71,11 +71,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="../cargo/index">
+                        <i class="nc-icon nc-tile-56"></i>
+                        <p>Cargo</p>
+                    </a>
                     <a href="../perfil/index">
                         <i class="nc-icon nc-controller-modern"></i>
                         <p>Perfil</p>
                     </a>
-                </li>
                 </li>
                 <li>
                     <a href="../tipo_projeto/index">

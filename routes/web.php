@@ -45,4 +45,26 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
+$this::group(['prefix' => 'demandantes'], function () {
+    $this::get('/index', ['uses' => 'DemandantesController@index', 'as' => 'demandantes.index']);
+    $this::get('/form', ['uses' => 'DemandantesController@create', 'as' => 'demandantes.create']);
+    $this::post('/store', ['uses' => 'DemandantesController@store', 'as' => 'demandantes.store']);
+    $this::get('/edit/{id}', ['uses' => 'DemandantesController@edit', 'as' => 'demandantes.edit']);
+    $this::get('/destroy/{id}', ['uses' => 'DemandantesController@destroy', 'as' => 'demandantes.destroy']);
+});
 
+$this::group(['prefix' => 'cargo'], function () {
+    $this::get('/index',        ['uses' => 'CargoController@index',   'as' => 'cargo.index']);
+    $this::get('/form',         ['uses' => 'CargoController@create',  'as' => 'cargo.create']);
+    $this::post('/store',       ['uses' => 'CargoController@store',   'as' => 'cargo.store']);
+    $this::get('/edit/{id}',    ['uses' => 'CargoController@edit',    'as' => 'cargo.edit']);
+    $this::get('/destroy/{id}', ['uses' => 'CargoController@destroy', 'as' => 'cargo.destroy']);
+});
+
+$this::group(['prefix' => 'perfil'], function () {
+    $this::get('/index', ['uses' => 'PerfilController@index', 'as' => 'perfil.index']);
+    $this::get('/form', ['uses' => 'PerfilController@create', 'as' => 'perfil.create']);
+    $this::post('/store', ['uses' => 'PerfilController@store', 'as' => 'perfil.store']);
+    $this::get('/edit/{id}', ['uses' => 'PerfilController@edit', 'as' => 'perfil.edit']);
+    $this::get('/destroy/{id}', ['uses' => 'PerfilController@destroy', 'as' => 'perfil.destroy']);
+});
