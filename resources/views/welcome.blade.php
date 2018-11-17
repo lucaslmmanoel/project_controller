@@ -1,11 +1,9 @@
 @extends('layouts.layout')
-
-
 @section('content')
     <div class="content">
         <div class="row text-center">
-            <h1 class="text-center">Bem vindo ao Seu gerenciador de projetos</h1>
-            <div class="col-lg-4">
+            <h1 class="text-center">Bem vindo ao Seu gerenciador de projetos {{ Auth::user()->name }}</h1>
+            <div class="col-lg-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row text-center">
@@ -35,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row text-center">
@@ -65,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row text-center">
@@ -98,7 +96,7 @@
         </div>
 
         <div class="row text-center">
-            <div class="col-lg-8 ml-auto mr-auto">
+            <div class="col-lg-12 ml-auto mr-auto">
                 <div class="card text-center">
                     <div class="card-header ">
                         <h5 class="card-title text-center">Projetos</h5>
@@ -109,25 +107,28 @@
                         <p>Nome do projeto aqui</p>
 
                     </div>
-                    <div class="card-footer ">
-                        <div class="legend">
-                            <a href="#" class="btn btn-small btn-outline-warning"><i
-                                    class="fa fa-circle text-warning"></i> Em andamento</a><br><br>
-                            <a href="#" class="btn btn-small btn-outline-success"><i
-                                    class="fa fa-circle text-success"></i> A receber</a>
-                            <a href="#" class="btn btn-small btn-outline-info"><i
-                                    class="fa fa-circle text-info"></i> A iniciar</a><br><br>
-                            <a href="#" class="btn btn-small btn-outline-default"><i
-                                    class="fa fa-circle text-dark"></i> Finalizados</a>
+                    <div class="row text-center">
+                        <div class="col-lg-12">
+                            <div class="card-footer ">
+                                <div class="legend">
+                                    <a href="#" class="btn btn-small btn-outline-warning"><i
+                                            class="fa fa-circle text-warning"></i> Em andamento</a>
+                                    <a href="#" class="btn btn-small btn-outline-success"><i
+                                            class="fa fa-circle text-success"></i> A receber</a>
+                                    <a href="#" class="btn btn-small btn-outline-info"><i
+                                            class="fa fa-circle text-info"></i> A iniciar</a>
+                                    <a href="#" class="btn btn-small btn-outline-default"><i
+                                            class="fa fa-circle text-dark"></i> Finalizados</a>
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-calendar"></i> Uma frase motivacional aqui
-                        </div>
+                    </div>
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-calendar"></i> <h5>Life is short, live Right!!!</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
