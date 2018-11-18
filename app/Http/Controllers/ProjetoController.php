@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProjetoModel as Projeto;
+use App\TipoProjetoModel as TipoProjeto;
+use App\DemandantesModel as Demandante;
 use Exception;
 
 class ProjetoController extends Controller
@@ -21,11 +23,16 @@ class ProjetoController extends Controller
              * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
              * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
              */
-            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-            $projetos = Projeto::orderBy('nome', 'asc')->get();
-
-//            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-//            $projeto = Projeto::where('status', 'A')->orderBy('nome', 'asc')->get();
+            // Retorna todos os Projetos que tem o status Ativo.
+            $projetos = Projeto::query()
+                ->select('tb_projeto.*', 'tb_demandante.nome as tx_nome_demandante', 'tb_tipo_projeto.nome as tx_nome')
+                ->join('tb_demandante', 'tb_demandante.id_demandante', '=', 'tb_projeto.id_demandante')
+                ->join('tb_tipo_projeto', 'tb_tipo_projeto.id_tipo_projeto', '=', 'tb_projeto.id_tipo_projeto')
+//                ->where('tb_projeto.status', '=', 'A')
+                ->where('tb_demandante.status', '=', 'A')
+                ->where('tb_tipo_projeto.status', '=', 'A')
+                ->orderBy('tb_projeto.nome', 'asc')
+                ->get();
 
             return view('projeto.index', compact('projetos', $projetos));
         } catch (\Exception $e) {
@@ -40,7 +47,13 @@ class ProjetoController extends Controller
      */
     public function create()
     {
-        return view('projeto.form');
+        // Combo com todos os tipos de projetos para o form de Projeto.
+        $tipo = TipoProjeto::all()->where('status', 'A');
+
+        // Combo com todos os demandantes para o form de Projeto.
+        $demandantes = Demandante::all()->where('status', 'A');
+
+        return view('projeto.form', compact(['tipo', 'demandantes'], [$tipo,$demandantes]));
     }
 
     /**
@@ -53,17 +66,27 @@ class ProjetoController extends Controller
     public function store(Request $request)
     {
         try {
-            if (!empty($request['id_projeto'])) {
+            if (!empty($request['id_perfil'])) {
                 try {
-                    Projeto::find($request['id_projeto'])->update($request->input());
+                    Projeto::find($request['id_perfil'])->update($request->input());
                     return redirect()->route('projeto.index');
                 } catch (Exception $e) {
                     throw new exception('Não foi possível alterar o registro do Projeto ' . $request->nome . ' !');
                 }
             }
             $projetos = new Projeto();
-            $projetos->nome = $request->nome;
-            $projetos->status = 'A';
+            $projetos->nome            = $request->nome;
+
+            # Remove os pontos e as virgulas do valor do projeto.
+            $valor  = str_replace("." , "" , $request->valor);
+            $valor2 = str_replace("," , "" , $valor);
+
+            $projetos->valor           = $valor2;
+            $projetos->dt_inicio       = $request->dt_inicio;
+            $projetos->dt_fim          = $request->dt_fim;
+            $projetos->id_tipo_projeto = $request->id_tipo_projeto;
+            $projetos->id_demandante   = $request->id_demandante;
+            $projetos->status          = $request->status ? $request->status : 'A';
             $projetos->save();
 
             return redirect()->route('projeto.index');
