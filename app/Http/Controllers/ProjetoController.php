@@ -116,8 +116,11 @@ class ProjetoController extends Controller
     public function edit($id)
     {
         try {
-            $projetos = Projeto::find($id);
-            return view('projeto.edit', compact('perfis', $projetos));
+            $projetos   = Projeto::find($id);
+            $demandante = Demandante::find($projetos->id_demandante);
+            $tp_projeto = TipoProjeto::find($projetos->id_tipo_projeto);
+
+            return view('projeto.edit', compact(['projetos', 'demandante', 'tp_projeto'], [$projetos, $demandante, $tp_projeto]));
 
         } catch (Exception $e) {
             throw new exception('Não foi possível recuperar os dados do projeto ' . $projetos->tx_nome . ' !');
