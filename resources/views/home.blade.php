@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('content')
     <div class="content">
         <div class="alert alert-primary alert-dismissible fade show">
@@ -73,5 +72,4 @@
             </div>
         </div>
     </div>
-
 @endsection

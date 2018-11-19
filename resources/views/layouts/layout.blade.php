@@ -35,7 +35,7 @@
         <div class="logo">
             <a href="#" class="simple-text logo-mini">
                 <div class="logo-image-small">
-                    <i class="nc-icon nc-atom" style="font-size: 30px;"></i>
+                    <i class="nc-icon nc-spaceship" style="font-size: 30px;"></i>
                 </div>
             </a>
             <a href="/" class="simple-text logo-normal">
@@ -47,41 +47,47 @@
 
             <ul class="nav">
                 <li>
+                    <a href="{{route('home')}}">
+                        <i class="nc-icon nc-app"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class="nc-icon nc-hat-3"></i>
                         <p>Gerência</p>
                     </a>
                 </li>
                 <li>
-                    <a href="./user.html">
+                    <a href="#">
                         <i class="nc-icon nc-trophy"></i>
                         <p>Time</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../demandantes/index">
+                    <a href="{{route('demandantes.index')}}">
                         <i class="nc-icon nc-satisfied"></i>
                         <p>Product Owners</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../projeto/index">
-                        <i class="nc-icon nc-tile-56"></i>
+                    <a href="{{route('projeto.index')}}">
+                        <i class="nc-icon nc-money-coins"></i>
                         <p>Projetos</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../cargo/index">
+                    <a href="{{route('cargo.index')}}">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Cargo</p>
                     </a>
-                    <a href="../perfil/index">
+                    <a href="{{route('cargo.index')}}">
                         <i class="nc-icon nc-controller-modern"></i>
                         <p>Perfil</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../tipo_projeto/index">
+                    <a href="{{route('tipo_projeto.index')}}">
                         <i class="nc-icon nc-book-bookmark"></i>
                         <p>Tipos de Projetos</p>
                     </a>
@@ -113,9 +119,18 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link btn-magnify" href="#pablo">
+                            <a class="nav-link btn-magnify" href="{{route('user.edit', Auth::user()->id)}}">
+                                <i class="nc-icon nc-chart-bar-32 mr-3" style="font-size: 30px"></i>
+                                {{ Auth::user()->name }}
+                                <p>
+                                    <span class="d-lg-none d-md-block">Stats</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-magnify" href="#">
                                 <i class="nc-icon nc-time-alarm mr-3" style="font-size: 30px"></i>
-                                   Horas
+                                Horas
                                 <p>
                                     <span class="d-lg-none d-md-block">Stats</span>
                                 </p>
@@ -127,7 +142,7 @@
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <i class="nc-icon nc-user-run mr-3" style="font-size: 30px"></i>
-                                   {{("  SAIR")}}
+                                {{("  SAIR")}}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                   style="display: none;">

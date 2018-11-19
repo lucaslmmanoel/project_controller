@@ -8,7 +8,7 @@
                     <div class="card-header text-center"><h2>{{ __('Formulário de Cadastro') }}</h2></div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -70,6 +70,9 @@
                                            name="password_confirmation" required>
                                 </div>
                             </div>
+
+                            <label for="#">Informe sua imagem de perfil</label>
+                            <input class="form-control-file" type="file" name="image">
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
