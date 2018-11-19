@@ -118,9 +118,12 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
                     <ul class="navbar-nav">
+                        <img src="{{url('storage/imgs/avatars/', Auth()->user()->avatar)}}"
+                             style="width:50px; height:50px; float:left; border-radius:50%; margin-right:25px;">
+
                         <li class="nav-item">
-                            <a class="nav-link btn-magnify" href="{{route('user.edit', Auth::user()->id)}}">
-                                <i class="nc-icon nc-chart-bar-32 mr-3" style="font-size: 30px"></i>
+
+                            <a class="nav-link btn-magnify mt-2" href="{{route('user.edit', Auth::user()->id)}}">
                                 {{ Auth::user()->name }}
                                 <p>
                                     <span class="d-lg-none d-md-block">Stats</span>

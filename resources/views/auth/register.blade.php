@@ -28,7 +28,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="perfil" class="col-md-4 col-lg-4 col-form-label text-md-right">{{ __('Perfil') }}</label>
+                                <label for="perfil"
+                                       class="col-md-4 col-lg-4 col-form-label text-md-right">{{ __('Perfil') }}</label>
                                 <div class="col-lg-6">
                                     <select name="id_perfil" id="perfil">
                                         <option disabled selected>Selecione o Perfil</option>
@@ -88,9 +89,6 @@
                                            name="password_confirmation" required>
                                 </div>
                             </div>
-
-                            <label for="#">Informe sua imagem de perfil</label>
-                            <input class="form-control-file" type="file" name="image">
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
