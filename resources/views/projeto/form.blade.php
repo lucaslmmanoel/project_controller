@@ -20,7 +20,7 @@
                                         {{ csrf_field() }}
 
                                         <div id="oculto">
-                                            <input type="number" name="id_perfil" hidden>
+                                            <input type="number" name="id_projeto" hidden>
                                         </div>
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="tx_nome">Nome<span class="obrigatorio">*</span></label>
@@ -29,17 +29,17 @@
                                                    placeholder="Informe um nome ou apelido ao seu projeto"/>
                                         </div>
                                         <div class="col-lg-10 offset-lg-1">
-                                            <label for="nu_money">Valor<span class="obrigatorio">*</span></label>
-                                            <input type="text" class="form-control" name="valor" id="nu_money"
-                                                   maxlength="30" required />
-                                        </div>
-                                        <div class="col-lg-10 offset-lg-1">
                                             <label for="dat_inicio">Data de início<span class="obrigatorio">*</span></label>
                                             <input type="date" class="form-control" name="dt_inicio" id="dat_inicio" required />
                                         </div>
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="dat_fim">Data Fim<span class="obrigatorio">*</span></label>
                                             <input type="date" class="form-control" name="dt_fim" id="dat_fim" required />
+                                        </div>
+                                        <div class="col-lg-10 offset-lg-1">
+                                            <label for="nu_money">Valor<span class="obrigatorio">*</span></label>
+                                            <input type="text" class="form-control" name="valor" id="nu_money"
+                                                   maxlength="10" required />
                                         </div>
                                         <br>
                                         <div class="col-lg-10 offset-lg-1">

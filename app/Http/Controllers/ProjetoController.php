@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 use App\ProjetoModel as Projeto;
 use App\TipoProjetoModel as TipoProjeto;
@@ -66,9 +67,14 @@ class ProjetoController extends Controller
     public function store(Request $request)
     {
         try {
-            if (!empty($request['id_perfil'])) {
+            if (!empty($request['id_projeto'])) {
                 try {
-                    Projeto::find($request['id_perfil'])->update($request->input());
+
+                    # Remove os strings vindos do formulário de edição.
+                    $request['valor'] = str_replace('.', '', $request['valor']);
+                    $request['valor'] = str_replace(',', '.', $request['valor']);
+
+                    Projeto::find($request['id_projeto'])->update($request->input());
                     return redirect()->route('projeto.index');
                 } catch (Exception $e) {
                     throw new exception('Não foi possível alterar o registro do Projeto ' . $request->nome . ' !');
@@ -117,13 +123,20 @@ class ProjetoController extends Controller
     {
         try {
             $projetos   = Projeto::find($id);
-            $demandante = Demandante::find($projetos->id_demandante);
-            $tp_projeto = TipoProjeto::find($projetos->id_tipo_projeto);
+            $projetos->valor = number_format($projetos->valor, '2', ',', '.');
 
-            return view('projeto.edit', compact(['projetos', 'demandante', 'tp_projeto'], [$projetos, $demandante, $tp_projeto]));
+            # Retorna os registros de acordo com o Tipo de Projeto.
+            $demandantes = Demandante::find($projetos->id_demandante);
+            $tp_projeto  = TipoProjeto::find($projetos->id_tipo_projeto);
+
+            $demandantes_all = Demandante::all();
+            $tp_projeto_all  = TipoProjeto::all();
+
+            return view('projeto.edit', compact(['projetos', 'demandantes', 'tp_projeto', 'demandantes_all', 'tp_projeto_all'],
+                                                     [ $projetos,  $demandantes, $tp_projeto,   $demandantes_all,  $tp_projeto_all ]));
 
         } catch (Exception $e) {
-            throw new exception('Não foi possível recuperar os dados do projeto ' . $projetos->tx_nome . ' !');
+            throw new exception('Não foi possível recuperar os dados do projeto ' . $projetos->nome . ' !');
         }
     }
 
@@ -154,7 +167,7 @@ class ProjetoController extends Controller
             $projetos->save();
             return redirect()->route('projeto.index');
         } catch (Exception $e) {
-            throw new exception('Não foi possível excluir o registro do Projeto ' . $projetos->tx_nome . ' !');
+            throw new exception('Não foi possível excluir o registro do Projeto ' . $projetos->nome . ' !');
         }
     }
 }
