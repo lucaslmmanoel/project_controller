@@ -59,29 +59,29 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../demandantes/index">
+                    <a href="{{ route('demandantes.index') }}">
                         <i class="nc-icon nc-satisfied"></i>
                         <p>Product Owners</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../projeto/index">
+                    <a href="{{ route('projeto.index') }}">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Projetos</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../cargo/index">
+                    <a href="{{ route('cargo.index') }}">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Cargo</p>
                     </a>
-                    <a href="../perfil/index">
+                    <a href="{{ route('perfil.index') }}">
                         <i class="nc-icon nc-controller-modern"></i>
                         <p>Perfil</p>
                     </a>
                 </li>
                 <li>
-                    <a href="../tipo_projeto/index">
+                    <a href="{{ route('tipo_projeto.index') }}">
                         <i class="nc-icon nc-book-bookmark"></i>
                         <p>Tipos de Projetos</p>
                     </a>

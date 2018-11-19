@@ -19,8 +19,8 @@
                             <thead>
                             <tr>
                                 <td>Ações</td>
-                                <td>Nome do Projeto</td>
-                                <td>Nome do Cliente</td>
+                                <td>Projeto</td>
+                                <td>Cliente</td>
                                 <td>Tipo de Projeto</td>
                                 <td>Status</td>
                             </tr>
@@ -39,8 +39,8 @@
                                         </a>
                                     </td>
                                     <td>{{$projeto->nome}}</td>
-                                    <td>{{$projeto->status}}</td>
-                                    <td>{{$projeto->status}}</td>
+                                    <td>{{$projeto->tx_nome_demandante}}</td>
+                                    <td>{{$projeto->tx_nome}}</td>
                                     <td>{{$projeto->status}}</td>
                                 </tr>
                             @endforeach
