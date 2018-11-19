@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Contracts\Auth\Access\Gate as Gate;
 use App\PerfilModel as Perfil;
 use Exception;
 
@@ -18,6 +18,10 @@ class PerfilController extends Controller
      */
     public function index()
     {
+        if(!\Gate::allows('Admin')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try {
             /**
              * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
@@ -42,6 +46,10 @@ class PerfilController extends Controller
      */
     public function create()
     {
+        if(!\Gate::allows('Admin')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         return view('perfil.form');
     }
 
@@ -54,8 +62,10 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
+        if(!\Gate::allows('Admin')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
         try {
-//        dd($request);
             if (!empty($request['id_perfil'])) {
                 try {
                     Perfil::find($request['id_perfil'])->update($request->input());
@@ -71,7 +81,6 @@ class PerfilController extends Controller
 
             return redirect()->route('perfil.index');
         } catch (Exception $e) {
-            echo $e;die;
             throw new exception('Não foi possível salvar o Perfil' . $request->nome . ' !');
         }
     }
@@ -96,6 +105,10 @@ class PerfilController extends Controller
      */
     public function edit($id)
     {
+        if(!\Gate::allows('Admin')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try {
             $perfis = Perfil::find($id);
             return view('perfil.edit', compact('perfis', $perfis));
@@ -126,6 +139,10 @@ class PerfilController extends Controller
      */
     public function destroy($id)
     {
+        if(!\Gate::allows('Admin')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try {
             $perfis = Perfil::find($id);
             $perfis->status = 'I';
