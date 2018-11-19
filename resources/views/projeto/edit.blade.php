@@ -69,7 +69,7 @@
                                                         <option value="{{ $demandante['id_demandante'] }}">{{ $demandante['nome'] }}</option>
                                                     @endif
                                                 @endforeach
-                                            </selec>
+                                            </select>
                                         </div>
 
                                         <div class="row">
