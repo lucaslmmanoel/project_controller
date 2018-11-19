@@ -46,7 +46,7 @@
                                         <br>
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="projeto">Tipo de Projeto<span class="obrigatorio">*</span></label>
-                                            <select name="id_tipo_projeto" id="projeto">
+                                            <select class="form-control" name="id_tipo_projeto" id="projeto">
                                                 <option disabled selected >Selecione</option>
                                                 @foreach($tp_projeto_all as $tipo):
                                                     @if (!empty($projetos->id_tipo_projeto))
@@ -60,7 +60,7 @@
                                         <br>
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="demandante">Demandante<span class="obrigatorio">*</span></label>
-                                            <select name="id_demandante" id="demandante">
+                                            <select class="form-control" name="id_demandante" id="demandante">
                                                 <option disabled selected >Selecione</option>
                                                 @foreach($demandantes_all as $demandante):
                                                     @if (!empty($projetos->id_tipo_projeto))
@@ -69,11 +69,11 @@
                                                         <option value="{{ $demandante['id_demandante'] }}">{{ $demandante['nome'] }}</option>
                                                     @endif
                                                 @endforeach
-                                            </select>
+                                            </selec>
                                         </div>
 
-
-                                        <div class="col-lg-10 offset-lg-1">
+                                        <div class="row">
+                                        <div class="col-lg-12 offset-lg-1">
                                             <label for="tp_status">Status</label>
                                             <input type="radio" class="form-control" name="status" id="tp_status"
                                                    value="A" @php echo $checked = ($projetos->status == 'A') ? 'checked' : '' @endphp />
@@ -89,6 +89,7 @@
                                             <span class="text-warning"> Pendente </span>
                                             <br>
                                         </div>
+                                    </div>
                                         <div class="col-lg-12 offset-lg-3">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>
