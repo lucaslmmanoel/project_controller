@@ -8,7 +8,7 @@
                     <div class="card-header text-center"><h2>{{ __('Formulário de Cadastro') }}</h2></div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -28,7 +28,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="perfil" class="col-md-4 col-lg-4 col-form-label text-md-right">{{ __('Perfil') }}</label>
+                                <label for="perfil"
+                                       class="col-md-4 col-lg-4 col-form-label text-md-right">{{ __('Perfil') }}</label>
                                 <div class="col-lg-6">
                                     <select name="id_perfil" id="perfil">
                                         <option disabled selected>Selecione o Perfil</option>
