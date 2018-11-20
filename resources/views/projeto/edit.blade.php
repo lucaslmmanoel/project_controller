@@ -100,6 +100,15 @@
                                                 </div>
                                             </div>
                                         @endcan
+                                        @can('Geren')
+                                            <div class="row">
+                                                <div class="col-lg-12 offset-lg-1">
+                                                    <input type="radio" class="form-control" name="status" id="tp_status"
+                                                           value="C" @php echo $checked = ($projetos->status == 'C') ? 'checked' : '' @endphp />
+                                                    <span class="text-warning"> Concluído </span>
+                                                </div>
+                                            </div>
+                                        @endcan
                                         <div class="col-lg-12 offset-lg-3">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>

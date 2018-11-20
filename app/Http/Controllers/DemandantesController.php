@@ -17,15 +17,14 @@ class DemandantesController extends Controller
     public function index()
     {
         try{
-            /**
-             * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
-             * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
-             */
+            if(Auth()->user()->id_perfil == 1 || Auth()->user()->id_perfil == 2){
+                // Retorna todos os Tipos de Projetos que tem o status Ativo.
+                $demandantes = Demandantes::orderBy('nome', 'asc')->get();
+            }else{
             // Retorna todos os Tipos de Projetos que tem o status Ativo.
-            $demandantes = Demandantes::orderBy('nome', 'asc')->get();
+            $demandantes = Demandantes::where('status', 'A')->orderBy('nome', 'asc')->get();
+            }
 
-//            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-//            $demandantes = Demandantes::where('status', 'A')->orderBy('nome', 'asc')->get();
 
             return view('demandantes.index', compact('demandantes', $demandantes));
         } catch(\Exception $e){
@@ -40,6 +39,10 @@ class DemandantesController extends Controller
      */
     public function create()
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         return view('demandantes.form');
     }
 
@@ -94,6 +97,10 @@ class DemandantesController extends Controller
      */
     public function edit($id)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try{
             $demandante = Demandantes::find($id);
             return view('demandantes.edit', compact('demandante', $demandante));
@@ -124,6 +131,10 @@ class DemandantesController extends Controller
      */
     public function destroy($id)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try{
             $demandante = Demandantes::find($id);
             $demandante->status = 'I';

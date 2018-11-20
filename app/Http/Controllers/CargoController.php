@@ -17,7 +17,7 @@ class CargoController extends Controller
     public function index()
     {
         try{
-            if(Auth()->user()->id == 1 || Auth()->user()->id == 2){
+            if(Auth()->user()->id_perfil == 1 || Auth()->user()->id_perfil == 2){
                 // Retorna todos os Tipos de Projetos que tem o status Ativo.
                 $cargos = Cargo::orderBy('nome', 'asc')->get();
             }else{
