@@ -22,7 +22,10 @@
                                 <td>Projeto</td>
                                 <td>Cliente</td>
                                 <td>Tipo de Projeto</td>
-                                <td>Status</td>
+                                <td>Valor</td>
+                                @can('Admin')
+                                    <td>Status</td>
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -41,7 +44,10 @@
                                     <td>{{$projeto->nome}}</td>
                                     <td>{{$projeto->tx_nome_demandante}}</td>
                                     <td>{{$projeto->tx_nome}}</td>
-                                    <td>{{$projeto->status}}</td>
+                                    <td>{{ $valor = number_format($projeto->valor, 2, ',', '.') }}</td>
+                                    @can('Admin')
+                                        <td>{{$projeto->status}}</td>
+                                    @endcan
                                 </tr>
                             @endforeach
                             </tbody>

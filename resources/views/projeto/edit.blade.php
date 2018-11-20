@@ -71,25 +71,35 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
-                                        <div class="row">
-                                        <div class="col-lg-12 offset-lg-1">
-                                            <label for="tp_status">Status</label>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="A" @php echo $checked = ($projetos->status == 'A') ? 'checked' : '' @endphp />
-                                            <span class="text-success"> Ativo </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="I" @php echo $checked = ($projetos->status == 'I') ? 'checked' : '' @endphp />
-                                            <span class="text-warning"> Inativo </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="C" @php echo $checked = ($projetos->status == 'C') ? 'checked' : '' @endphp />
-                                            <span class="text-warning"> Concluído </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="P" @php echo $checked = ($projetos->status == 'P') ? 'checked' : '' @endphp />
-                                            <span class="text-warning"> Pendente </span>
-                                            <br>
-                                        </div>
-                                    </div>
+                                        @can('Admin')
+                                            <div class="row">
+                                                <div class="col-lg-12 offset-lg-1">
+                                                    <label for="tp_status">Status</label>
+                                                    <input type="radio" class="form-control" name="status" id="tp_status"
+                                                           value="A" @php echo $checked = ($projetos->status == 'A') ? 'checked' : '' @endphp />
+                                                    <span class="text-success"> Ativo </span>
+                                                    <input type="radio" class="form-control" name="status" id="tp_status"
+                                                           value="C" @php echo $checked = ($projetos->status == 'C') ? 'checked' : '' @endphp />
+                                                    <span class="text-warning"> Concluído </span>
+                                                    <input type="radio" class="form-control" name="status" id="tp_status"
+                                                           value="I" @php echo $checked = ($projetos->status == 'I') ? 'checked' : '' @endphp />
+                                                    <span class="text-warning"> Inativo </span>
+                                                    <input type="radio" class="form-control" name="status" id="tp_status"
+                                                           value="P" @php echo $checked = ($projetos->status == 'P') ? 'checked' : '' @endphp />
+                                                    <span class="text-warning"> Pendente </span>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        @endcan
+                                        @can('Func')
+                                            <div class="row">
+                                                <div class="col-lg-12 offset-lg-1">
+                                                    <input type="radio" class="form-control" name="status" id="tp_status"
+                                                           value="C" @php echo $checked = ($projetos->status == 'C') ? 'checked' : '' @endphp />
+                                                    <span class="text-warning"> Concluído </span>
+                                                </div>
+                                            </div>
+                                        @endcan
                                         <div class="col-lg-12 offset-lg-3">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>

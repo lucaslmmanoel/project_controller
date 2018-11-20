@@ -17,15 +17,13 @@ class CargoController extends Controller
     public function index()
     {
         try{
-            /**
-             * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
-             * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
-             */
+            if(Auth()->user()->id == 1 || Auth()->user()->id == 2){
+                // Retorna todos os Tipos de Projetos que tem o status Ativo.
+                $cargos = Cargo::orderBy('nome', 'asc')->get();
+            }else{
             // Retorna todos os Tipos de Projetos que tem o status Ativo.
-            $cargos = Cargo::orderBy('nome', 'asc')->get();
-
-//            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-//            $cargos = Cargo::where('status', 'A')->orderBy('nome', 'asc')->get();
+            $cargos = Cargo::where('status', 'A')->orderBy('nome', 'asc')->get();
+            }
 
             return view('cargo.index', compact('cargos', $cargos));
         } catch(\Exception $e){
@@ -40,6 +38,10 @@ class CargoController extends Controller
      */
     public function create()
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         return view('cargo.form');
     }
 
@@ -52,6 +54,10 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try{
             if(!empty($request['id_cargo'])){
                 try{
@@ -94,6 +100,10 @@ class CargoController extends Controller
      */
     public function edit($id)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try{
             $cargo = Cargo::find($id);
             return view('cargo.edit', compact('cargo', $cargo));
@@ -124,6 +134,10 @@ class CargoController extends Controller
      */
     public function destroy($id)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try{
             $cargo = Cargo::find($id);
             $cargo->status = 'I';
