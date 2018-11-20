@@ -23,15 +23,8 @@ class PerfilController extends Controller
         }
 
         try {
-            /**
-             * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
-             * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
-             */
             // Retorna todos os Tipos de Projetos que tem o status Ativo.
             $perfis = Perfil::orderBy('nome', 'asc')->get();
-
-//            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-//            $perfil = Perfil::where('status', 'A')->orderBy('nome', 'asc')->get();
 
             return view('perfil.index', compact('perfis', $perfis));
         } catch (\Exception $e) {

@@ -75,11 +75,15 @@
                         <i class="nc-icon nc-tile-56"></i>
                         <p>Cargo</p>
                     </a>
-                    <a href="{{ route('perfil.index') }}">
-                        <i class="nc-icon nc-controller-modern"></i>
-                        <p>Perfil</p>
-                    </a>
                 </li>
+                @can('Admin')
+                    <li>
+                        <a href="{{ route('perfil.index') }}">
+                            <i class="nc-icon nc-controller-modern"></i>
+                            <p>Perfil</p>
+                        </a>
+                    </li>
+                @endcan
                 <li>
                     <a href="{{ route('tipo_projeto.index') }}">
                         <i class="nc-icon nc-book-bookmark"></i>

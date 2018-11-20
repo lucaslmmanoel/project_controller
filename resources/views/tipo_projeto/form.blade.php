@@ -33,14 +33,16 @@
                                             <input type="text" class="form-control" name="desc" id="tx_descricao"
                                                    maxlength="70" required/>
                                         </div>
-                                        <div class="col-lg-10 offset-1">
-                                            <label for="tp_status">Status <span class="obrigatorio">*</span></label>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="A"/> <span class="text-success"> Ativo </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="I"/> <span class="text-warning"> Inativo </span>
-                                            <br>
-                                        </div>
+                                        @can('Admin')
+                                            <div class="col-lg-10 offset-1">
+                                                <label for="tp_status">Status <span class="obrigatorio">*</span></label>
+                                                <input type="radio" class="form-control" name="status" id="tp_status"
+                                                       value="A"/> <span class="text-success"> Ativo </span>
+                                                <input type="radio" class="form-control" name="status" id="tp_status"
+                                                       value="I"/> <span class="text-warning"> Inativo </span>
+                                                <br>
+                                            </div>
+                                        @endcan
                                         <div class="col-lg-12">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>

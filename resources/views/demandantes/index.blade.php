@@ -17,13 +17,14 @@
                         </a>
                     </div>
                     <div class="card-body ">
-                        {{-- Realizar um laço nos tipos de projetos e mostra-los aqui --}}
                         <table class="table table-striped">
                             <thead>
                             <tr>
                                 <td>Ações</td>
                                 <td>Nome do Demandante</td>
-                                <td>Status</td>
+                                @can('Admin')
+                                    <td>Status</td>
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -40,7 +41,9 @@
                                         </a>
                                     </td>
                                     <td>{{$demandante->nome}}</td>
-                                    <td>{{$demandante->status}}</td>
+                                    @can('Admin')
+                                        <td>{{$demandante->status}}</td>
+                                    @endcan
                                     <td>
                                     </td>
                                 </tr>

@@ -21,7 +21,9 @@
                             <tr>
                                 <td>Ações</td>
                                 <td>Nome do Demandante</td>
-                                <td>Status</td>
+                                @can('Admin')
+                                    <td>Status</td>
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -38,7 +40,9 @@
                                         </a>
                                     </td>
                                     <td>{{$perfil->nome}}</td>
-                                    <td>{{$perfil->status}}</td>
+                                    @can('Admin')
+                                        <td>{{$perfil->status}}</td>
+                                    @endcan
                                     <td>
                                     </td>
                                 </tr>
