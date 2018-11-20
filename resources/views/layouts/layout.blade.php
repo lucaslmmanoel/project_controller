@@ -176,7 +176,9 @@
         <script src="{{asset('js/bootstrap-notify.js')}}" defer></script>
         <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{asset('js/paper-dashboard.min.js?v=2.0.0')}}" type="text/javascript" defer></script>
+        <script src="{{asset('js/request_issue.js')}}" type="text/javascript" defer></script>
         <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 </body>
+
 
 </html>

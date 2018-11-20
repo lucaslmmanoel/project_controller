@@ -19,28 +19,25 @@
                             <div class="row">
                                 <div class="col-md-6 ml-auto mr-auto text-center">
                                     <h4 class="card-title">
-                                        Notifications Places
-                                        <p class="category">Click to view notifications</p>
+                                        Issue Place
+                                        <p class="category">Confira aqui as issues do projeto</p>
                                     </h4>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-8 ml-auto mr-auto">
+                                <div class="col-lg-12 ml-auto mr-auto">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <button class="btn btn-primary btn-block"
-                                                    onclick="demo.showNotification('top','left')">Top Left
-                                            </button>
+                                        <div class="col-lg-6">
+                                            <h3>Issues em aberto</h3>
+                                            <div id="issues_opened">
+
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <button class="btn btn-primary btn-block"
-                                                    onclick="demo.showNotification('top','center')">Top Center
-                                            </button>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button class="btn btn-primary btn-block"
-                                                    onclick="demo.showNotification('top','right')">Top Right
-                                            </button>
+                                        <div class="col-lg-6">
+                                            <h3>Issues fechadas</h3>
+                                            <div id="issues_closed">
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -72,4 +69,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection
