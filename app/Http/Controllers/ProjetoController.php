@@ -20,20 +20,29 @@ class ProjetoController extends Controller
     public function index()
     {
         try {
-            /**
-             * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
-             * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
-             */
-            // Retorna todos os Projetos que tem o status Ativo.
-            $projetos = Projeto::query()
-                ->select('tb_projeto.*', 'tb_demandante.nome as tx_nome_demandante', 'tb_tipo_projeto.nome as tx_nome')
-                ->join('tb_demandante', 'tb_demandante.id_demandante', '=', 'tb_projeto.id_demandante')
-                ->join('tb_tipo_projeto', 'tb_tipo_projeto.id_tipo_projeto', '=', 'tb_projeto.id_tipo_projeto')
-//                ->where('tb_projeto.status', '=', 'A')
-                ->where('tb_demandante.status', '=', 'A')
-                ->where('tb_tipo_projeto.status', '=', 'A')
-                ->orderBy('tb_projeto.nome', 'asc')
-                ->get();
+            if(Auth()->user()->id_perfil == 1 || Auth()->user()->id_perfil == 2) {
+                // Retorna todos os Projetos que tem o status Ativo.
+                $projetos = Projeto::query()
+                    ->select('tb_projeto.*', 'tb_demandante.nome as tx_nome_demandante', 'tb_tipo_projeto.nome as tx_nome')
+                    ->join('tb_demandante', 'tb_demandante.id_demandante', '=', 'tb_projeto.id_demandante')
+                    ->join('tb_tipo_projeto', 'tb_tipo_projeto.id_tipo_projeto', '=', 'tb_projeto.id_tipo_projeto')
+                    ->where('tb_demandante.status', '=', 'A')
+                    ->where('tb_tipo_projeto.status', '=', 'A')
+                    ->orderBy('tb_projeto.nome', 'asc')
+                    ->get();
+            }
+
+            if(Auth()->user()->id_perfil == 3){
+                $projetos = Projeto::query()
+                    ->select('tb_projeto.*', 'tb_demandante.nome as tx_nome_demandante', 'tb_tipo_projeto.nome as tx_nome')
+                    ->join('tb_demandante', 'tb_demandante.id_demandante', '=', 'tb_projeto.id_demandante')
+                    ->join('tb_tipo_projeto', 'tb_tipo_projeto.id_tipo_projeto', '=', 'tb_projeto.id_tipo_projeto')
+                    ->where('tb_demandante.status', '=', 'A')
+                    ->where('tb_tipo_projeto.status', '=', 'A')
+                    ->where('tb_projeto.status', '=', 'A')
+                    ->orderBy('tb_projeto.nome', 'asc')
+                    ->get();
+            }
 
             return view('projeto.index', compact('projetos', $projetos));
         } catch (\Exception $e) {

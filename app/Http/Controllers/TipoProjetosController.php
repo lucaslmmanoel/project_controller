@@ -22,16 +22,18 @@ class TipoProjetosController extends Controller
      */
     public function index()
     {
-        try {
-            /**
-             * todo => Implementar lógica para mostrar Ativos e Inativos casa o perfil seja do adm(roger)
-             * todo => Caso o perfil não seja de adm, executar o array comentado abaixo.
-             */
-            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-            $tp_projetos = TpProjeto::orderBy('nome', 'asc')->get();
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
 
-//            // Retorna todos os Tipos de Projetos que tem o status Ativo.
-//            $tp_projetos = TpProjeto::where('status', 'A')->orderBy('nome', 'asc')->get();
+        try {
+            if(Auth()->user()->id_perfil == 1 || Auth()->user()->id_perfil == 2){
+                // Retorna todos os Tipos de Projetos que tem o status Ativo.
+                $tp_projetos = TpProjeto::orderBy('nome', 'asc')->get();
+            }else
+
+            // Retorna todos os Tipos de Projetos que tem o status Ativo.
+            $tp_projetos = TpProjeto::where('status', 'A')->orderBy('nome', 'asc')->get();
 
             return view('tipo_projeto.index', compact('tp_projetos', $tp_projetos));
         } catch (\Exception $e) {
@@ -46,6 +48,10 @@ class TipoProjetosController extends Controller
      */
     public function create()
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         return view('tipo_projeto.form');
     }
 
@@ -58,6 +64,10 @@ class TipoProjetosController extends Controller
      */
     public function store(Request $request)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try {
 
             if (!empty($request['id_tipo_projeto'])) {
@@ -101,6 +111,10 @@ class TipoProjetosController extends Controller
      */
     public function edit($id)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try {
             $tp_projeto = TipoProjetoModel::find($id);
             return view('tipo_projeto.edit', compact('tp_projeto', $tp_projeto));
@@ -131,6 +145,10 @@ class TipoProjetosController extends Controller
      */
     public function destroy($id)
     {
+        if(!\Gate::allows('Admin') && !\Gate::allows('Geren')){
+            abort(403, "Página não autorizada! Você não tem permissão para acessar nessa página!");
+        }
+
         try {
             $tp_projeto = TipoProjetoModel::find($id);
             $tp_projeto->status = 'I';

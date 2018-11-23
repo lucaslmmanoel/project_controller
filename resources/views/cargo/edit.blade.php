@@ -31,18 +31,19 @@
                                         <div class="col-lg-10 offset-1">
                                             <label for="tx_descricao">Descrição</label>
                                             <input type="text" class="form-control" name="desc" id="tx_descricao"
-                                                   maxlength="70" value="{{ $cargo->desc }}" required/>
+                                                   maxlength="70" value="{{ $cargo->desc }}"/>
                                         </div>
                                         <br>
-                                        {{-- Mostrar só para perfil adm (Roger) --}}
-                                        <div class="col-lg-10 offset-1">
-                                            <label for="tp_status">Status <span class="obrigatorio">*</span> </label>
-                                            <input type="radio" name="status" class="form-control" id="tp_status"
-                                                   value="A" @php echo $checked = ($cargo->status == 'A') ? 'checked' : '' @endphp/>Ativo
-                                            <input type="radio" name="status" class="form-control" id="tp_status"
-                                                   value="I" @php echo $checked = ($cargo->status == 'I') ? 'checked' : '' @endphp/>Inativo
-                                            <br>
-                                        </div>
+                                        @can('Admin')
+                                            <div class="col-lg-10 offset-1">
+                                                <label for="tp_status">Status <span class="obrigatorio">*</span> </label>
+                                                <input type="radio" name="status" class="form-control" id="tp_status"
+                                                       value="A" @php echo $checked = ($cargo->status == 'A') ? 'checked' : '' @endphp/>Ativo
+                                                <input type="radio" name="status" class="form-control" id="tp_status"
+                                                       value="I" @php echo $checked = ($cargo->status == 'I') ? 'checked' : '' @endphp/>Inativo
+                                                <br>
+                                            </div>
+                                        @endcan
                                         <div class="col-lg-12">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>

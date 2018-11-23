@@ -39,12 +39,12 @@
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="nu_money">Valor<span class="obrigatorio">*</span></label>
                                             <input type="text" class="form-control" name="valor" id="nu_money"
-                                                   maxlength="10" required />
+                                                   maxlength="7" required />
                                         </div>
                                         <br>
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="projeto">Tipo de Projeto<span class="obrigatorio">*</span></label>
-                                            <select name="id_tipo_projeto" id="projeto">
+                                            <select class="form-control" name="id_tipo_projeto" id="projeto" required>
                                                 <option disabled selected >Selecione</option>
                                                 @foreach($tipo as $tp_projeto):
                                                     <option value="{{ $tp_projeto['id_tipo_projeto'] }}">{{ $tp_projeto['nome'] }}</option>
@@ -54,27 +54,27 @@
                                         <br>
                                         <div class="col-lg-10 offset-lg-1">
                                             <label for="demandante">Demandante<span class="obrigatorio">*</span></label>
-                                            <select name="id_demandante" id="demandante">
+                                            <select class="form-control" name="id_demandante" id="demandante" required>
                                                 <option disabled selected >Selecione</option>
                                                 @foreach($demandantes as $demandante):
                                                     <option value="{{ $demandante['id_demandante'] }}">{{ $demandante['nome'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-
-
-                                        <div class="col-lg-10 offset-lg-1">
-                                            <label for="tp_status">Status</label>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="A"/> <span class="text-success"> Ativo </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="I"/> <span class="text-warning"> Inativo </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="C"/> <span class="text-warning"> Concluído </span>
-                                            <input type="radio" class="form-control" name="status" id="tp_status"
-                                                   value="P"/> <span class="text-warning"> Pendente </span>
-                                            <br>
-                                        </div>
+                                        @can('Admin')
+                                            <div class="col-lg-10 offset-lg-1">
+                                                <label for="tp_status">Status</label>
+                                                <input type="radio" class="form-control" name="status" id="tp_status"
+                                                       value="A"/> <span class="text-success"> Ativo </span>
+                                                <input type="radio" class="form-control" name="status" id="tp_status"
+                                                       value="I"/> <span class="text-warning"> Inativo </span>
+                                                <input type="radio" class="form-control" name="status" id="tp_status"
+                                                       value="C"/> <span class="text-warning"> Concluído </span>
+                                                <input type="radio" class="form-control" name="status" id="tp_status"
+                                                       value="P"/> <span class="text-warning"> Pendente </span>
+                                                <br>
+                                            </div>
+                                        @endcan
                                         <div class="col-lg-12 offset-lg-3">
                                             <button type="submit" class="btn btn-success">
                                                 <span class="fa fa-paper-plane"> </span>
