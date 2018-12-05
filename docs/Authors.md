@@ -11,8 +11,8 @@ The purpose of this file is centralize the information of the project authors.
 
 ## Contribuitors
 
-Name             | E-mail
------------------|------------------------------| Occupation in the Project 
+Name             | E-mail                       | Occupation in the Project |
+-----------------|------------------------------| -------------- |
 Douglas Santana  | douglasantana007@gmail.com   | Analisty Developer
 Lucas Manoel     | lucaslmmanoel@gmail.com      | Developer
 
