@@ -27,6 +27,6 @@ This is documentations about the process of development of Project Controller;
 
 Contens the list of participants of development this project.
 
-Click [here](docs.Authors.md) to view the list of participants of project.
+Click [here](docs/Authors.md) to view the list of participants of project.
 
 
